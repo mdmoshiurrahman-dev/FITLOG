@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@import "tailwindcss";
+
+@theme {
+  --font-teko: var(--font-teko);
+  --font-sans: var(--font-open-sans), var(--font-geist-sans), sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
