@@ -13,8 +13,12 @@ const TheLibrary = async () => {
   return (
     <section>
       <div>
-        <h2>THE LIBRARY</h2>
-        <p>Twelve lifts covering every major muscle group.</p>
+        <div className="container mx-auto pl-4 md:pl-6">
+          <h2 className="text-white font-teko text-3xl">THE LIBRARY</h2>
+          <p className="text-gray-300 text-[14px]">
+            Twelve lifts covering every major muscle group.
+          </p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 p-4 sm:p-6 w-full max-w-7xl mx-auto">
           {workoutData.map((data) => (
             <WorkoutCart key={data.id} data={data} />
@@ -26,4 +30,3 @@ const TheLibrary = async () => {
 };
 
 export default TheLibrary;
-
