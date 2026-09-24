@@ -59,7 +59,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <div>
         <div className="flex m-4 justify-between items-center">
           <div
-            className={`rounded-xl border border-gray-800 p-1.25 bg-[#151921]`}
+            className={`rounded-xl border border-gray-800 p-1.25 bg-[#151921] flex flex-col md:inline-block`}
           >
             <button
               onClick={() => handelButton(true)}

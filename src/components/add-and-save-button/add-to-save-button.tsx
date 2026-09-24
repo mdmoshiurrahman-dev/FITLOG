@@ -29,7 +29,7 @@ const AddToSaveButton = ({ data }: AddButtonProps) => {
     <>
       <button
         onClick={() => handelSavedButton(data)}
-        className="px-4 py-2 rounded-[10px] cursor-pointer text-sm font-semibold text-white border border-gray-400"
+        className="px-4 py-2 rounded-[10px] cursor-pointer  text-sm font-semibold text-white border border-gray-400"
       >
         {saveButton ? (
           <>

@@ -91,7 +91,7 @@ const DetailsPage = async ({ params }: { params: Promise<{ id: string }> }) => {
             ))}
           </ol>
         </div>
-        <div className="mt-5 flex gap-3">
+        <div className="mt-5 flex gap-3 flex-col md:flex-row">
           <AddToTodayPlanButton data={data} />
           <AddToSaveButton data={data} />
         </div>
