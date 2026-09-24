@@ -1,3 +1,5 @@
+import AddToSaveButton from "@/components/add-and-save-button/add-to-save-button";
+import AddToTodayPlanButton from "@/components/add-and-save-button/AddToTodayPlanButton";
 import { IWorkout } from "@/types/workoutDataType/workout";
 import Image from "next/image";
 import { CiBookmark } from "react-icons/ci";
@@ -90,12 +92,8 @@ const DetailsPage = async ({ params }: { params: Promise<{ id: string }> }) => {
           </ol>
         </div>
         <div className="mt-5 flex gap-3">
-          <button className="bg-[#C2F800] px-4 py-2 rounded-[10px] border-transparent text-sm font-semibold">
-            <MdDateRange className="inline" /> Add to today&apos;s plan
-          </button>
-          <button className="px-4 py-2 rounded-[10px]  text-sm font-semibold text-white border border-gray-400">
-            <CiBookmark className="inline" /> Save for later
-          </button>
+          <AddToTodayPlanButton data={data} />
+          <AddToSaveButton data={data} />
         </div>
       </div>
     </div>

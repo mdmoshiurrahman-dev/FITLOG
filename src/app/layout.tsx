@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Open_Sans, Teko } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/nav/NavBar";
 import Footer from "@/components/footer/Footer";
+import WorkoutDataProvider from "@/context/WorkoutDataProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,7 +22,7 @@ const openSans = Open_Sans({
 const teko = Teko({
   variable: "--font-teko",
   subsets: ["latin"],
-  weight:'600'
+  weight: "600",
 });
 
 export const metadata: Metadata = {
@@ -37,9 +38,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} ${openSans.variable} ${teko.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#0C0D10]">
-        <NavBar />
-        {children}
-        <Footer/>
+        <WorkoutDataProvider>
+          <NavBar />
+          {children}
+          <Footer />
+        </WorkoutDataProvider>
       </body>
     </html>
   );

@@ -1,18 +1,28 @@
+"use client";
+import { DataContext } from "@/context/WorkoutDataProvider";
+import { DataContextType } from "@/types/workoutDataType/workout";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useContext } from "react";
 const NavBar = () => {
+  const pathName = usePathname();
+  const { todayPlan, saved } = useContext(DataContext) as DataContextType;
   const links = (
     <>
       <li>
         <Link
-          href="#"
-          className="text-[#bcec1e] font-bold bg-[#1A2312] px-4 py-2 rounded-2xl"
+          href="/"
+          className={`${pathName === "/" ? "text-[#bcec1e] font-bold bg-[#1A2312] px-4 py-2 rounded-2xl" : "font-bold text-gray-300 px-4 py-2 rounded-2xl"}`}
         >
           Workouts
         </Link>
       </li>
       <li>
-        <Link href="#" className="font-bold text-gray-300">
+        <Link
+          href="/my-plan"
+          className={`${pathName === "/my-plan" ? "text-[#bcec1e] font-bold bg-[#1A2312] px-4 py-2 rounded-2xl" : "font-bold text-gray-300 px-4 py-2 rounded-2xl"}`}
+        >
           My Plan
         </Link>
       </li>
@@ -21,12 +31,18 @@ const NavBar = () => {
   const linksDropdown = (
     <>
       <li>
-        <Link href="#" className="text-[#bcec1e] font-bold bg-[#1A2312]">
+        <Link
+          href="/"
+          className={`${pathName === "/" ? "text-[#bcec1e] font-bold bg-[#1A2312]" : "font-bold text-black"}`}
+        >
           Workouts
         </Link>
       </li>
       <li>
-        <Link href="#" className="font-bold text-black">
+        <Link
+          href="/my-plan"
+          className={`${pathName === "/my-plan" ? "text-[#bcec1e] font-bold bg-[#1A2312]" : "font-bold text-black"}`}
+        >
           My Plan
         </Link>
       </li>
@@ -89,13 +105,13 @@ const NavBar = () => {
           <div className="flex gap-2 items-center">
             <p className="text-gray-100">Plan</p>
             <p className="bg-[#C2F800] px-2 font-bold text-black rounded-full">
-              0
+              {todayPlan.length}
             </p>
           </div>
           <div className="flex gap-2 items-center">
             <p className="text-gray-100">Saved</p>
             <p className="border border-gray-50 px-2 font-bold text-white rounded-full">
-              0
+              {saved.length}
             </p>
           </div>
         </div>

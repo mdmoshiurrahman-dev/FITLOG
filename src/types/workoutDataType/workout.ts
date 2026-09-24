@@ -13,3 +13,13 @@ export interface IWorkout {
   description: string;
   instructions: string[];
 }
+
+
+export interface DataContextType {
+  todayPlan: IWorkout[];
+  SetTodayPlan: React.Dispatch<React.SetStateAction<IWorkout[]>>;
+  saved: IWorkout[];
+  setSaved: React.Dispatch<React.SetStateAction<IWorkout[]>>;
+  button: boolean;
+  setButton: React.Dispatch<React.SetStateAction<boolean>>;
+}
