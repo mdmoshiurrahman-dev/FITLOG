@@ -1,5 +1,6 @@
 import { IWorkout } from "@/types/workoutDataType/workout";
 import Image from "next/image";
+import Link from "next/link";
 import { CiStar } from "react-icons/ci";
 import { FaFire } from "react-icons/fa";
 import { IoMdTime } from "react-icons/io";
@@ -10,8 +11,8 @@ export interface WorkoutCartProps {
 
 const WorkoutCart = ({ data }: WorkoutCartProps) => {
   return (
-    <section className="container mx-auto">
-      <div className="border border-gray-500 grid grid-rows-2 rounded-xl">
+    <Link href={`/${data.id}`}>
+      <div className="border border-gray-400 grid grid-rows-2 rounded-xl hover:border-[#C2F800] duration-100">
         <div className="overflow-hidden relative">
           <Image
             className="object-cover rounded-t-xl"
@@ -48,7 +49,7 @@ const WorkoutCart = ({ data }: WorkoutCartProps) => {
           </div>
         </div>
       </div>
-    </section>
+    </Link>
   );
 };
 
