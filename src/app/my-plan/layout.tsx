@@ -77,14 +77,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <div className="flex gap-2 items-center">
             <p className="text-[14px] text-gray-300">Sort By</p>
             <select
-              name="cars"
+              name="Order"
               id="cars"
-              className="bg-[#14171E] text-white text-[14px] outline-0 px-3 py-2 border border-gray-600 rounded-[10px]"
+              className="bg-[#14171E] text-white text-[14px] outline-0 px-3 py-2 border border-gray-600 rounded-[10px] appearance-none"
             >
-              <option value="volvo">Duration</option>
-              <option value="saab">Time</option>
-              <option value="mercedes">Calorie</option>
-              <option value="audi">Rating</option>
+              <option value="duration">Duration</option>
+              <option value="calorie">Calories</option>
+              <option value="rating">Rating</option>
             </select>
           </div>
         </div>

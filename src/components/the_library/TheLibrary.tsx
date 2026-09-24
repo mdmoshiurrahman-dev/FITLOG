@@ -14,7 +14,7 @@ const TheLibrary = async () => {
     <section>
       <div>
         <div className="container mx-auto pl-4 md:pl-6">
-          <h2 className="text-white font-teko text-3xl">THE LIBRARY</h2>
+          <h2 className="text-white font-teko text-3xl" id="library-section">THE LIBRARY</h2>
           <p className="text-gray-300 text-[14px]">
             Twelve lifts covering every major muscle group.
           </p>
