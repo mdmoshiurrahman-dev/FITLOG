@@ -11,7 +11,7 @@ export interface WorkoutCartProps {
 const WorkoutCart = ({ data }: WorkoutCartProps) => {
   return (
     <section className="container mx-auto">
-      <div className="border border-gray-500 grid grid-rows-2 rounded-xl mx-5">
+      <div className="border border-gray-500 grid grid-rows-2 rounded-xl">
         <div className="overflow-hidden relative">
           <Image
             className="object-cover rounded-t-xl"
