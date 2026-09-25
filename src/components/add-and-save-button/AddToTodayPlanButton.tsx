@@ -4,6 +4,7 @@ import { AddButtonProps } from "./add-to-save-button";
 import { DataContext } from "@/context/WorkoutDataProvider";
 import { DataContextType, IWorkout } from "@/types/workoutDataType/workout";
 import { useContext, useState } from "react";
+import { toast } from "react-toastify";
 
 const AddToTodayPlanButton = ({ data }: AddButtonProps) => {
   const { todayPlan, SetTodayPlan } = useContext(
@@ -16,12 +17,14 @@ const AddToTodayPlanButton = ({ data }: AddButtonProps) => {
   const handelAddToTodayPlan = (data: IWorkout): void => {
     const isExist = todayPlan.some((f) => f.id === data.id);
     if (!isExist) {
+      toast.success(`${data.name} added to today's plan`);
       SetTodayPlan([...todayPlan, data]);
       handelButtonState(false);
     } else {
       const remaining = todayPlan.filter((f) => f.id !== data.id);
       SetTodayPlan(remaining);
       handelButtonState(true);
+      toast.success(`${data.name} removed from today's plan`);
     }
   };
   return (

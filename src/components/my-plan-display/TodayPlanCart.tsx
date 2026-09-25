@@ -6,6 +6,7 @@ import { CiStar } from "react-icons/ci";
 import { FaCheck, FaFire } from "react-icons/fa";
 import { IoMdTime } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
+import { toast } from "react-toastify";
 
 export interface TodayPlanCartProps {
   prop: IWorkout;
@@ -25,6 +26,9 @@ const TodayPlanCart = ({
   const [markButton, setMarkButton] = useState(true);
   const handelMarkButton = () => {
     setMarkButton(!markButton);
+    if (markButton) {
+      toast.success(`🎉 You've finished ${prop.name}!`);
+    }
   };
   return (
     <div

@@ -4,6 +4,7 @@ import { DataContextType, IWorkout } from "@/types/workoutDataType/workout";
 import { useContext, useState } from "react";
 import { CiBookmark } from "react-icons/ci";
 import { FaBookmark } from "react-icons/fa";
+import { toast } from "react-toastify";
 export interface AddButtonProps {
   data: IWorkout;
 }
@@ -16,9 +17,11 @@ const AddToSaveButton = ({ data }: AddButtonProps) => {
       const remaining = saved.filter((f) => f.id !== data.id);
       setSaved(remaining);
       handelButtonState();
+      toast.success(`${data.name} removed from saved items`);
     } else {
       setSaved([...saved, data]);
       handelButtonState();
+      toast.success(`${data.name} saved for later`);
     }
   };
   const [saveButton, setSaveButton] = useState(true);
@@ -28,7 +31,9 @@ const AddToSaveButton = ({ data }: AddButtonProps) => {
   return (
     <>
       <button
-        onClick={() => handelSavedButton(data)}
+        onClick={() => {
+          handelSavedButton(data);
+        }}
         className="px-4 py-2 rounded-[10px] cursor-pointer  text-sm font-semibold text-white border border-gray-400"
       >
         {saveButton ? (
