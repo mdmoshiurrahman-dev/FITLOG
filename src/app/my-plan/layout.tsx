@@ -6,7 +6,7 @@ import {
   IWorkout,
   SortedDataContextType,
 } from "@/types/workoutDataType/workout";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const { todayPlan, SetTodayPlan, saved, setSaved, button, setButton } =
@@ -15,26 +15,25 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     setButton(value);
   };
 
-  const totalMinutesOfTodayPlan = todayPlan.reduce(
-    (total, exercise) => total + exercise.duration,
-    0,
-  );
-  const totalMinutesOfSaved = saved.reduce(
-    (total, exercise) => total + exercise.duration,
-    0,
-  );
-  const totalCaloriesOfTodayPlan = todayPlan.reduce(
-    (total, exercise) => total + exercise.caloriesBurned,
-    0,
-  );
-  const totalCaloriesOfSaved = saved.reduce(
-    (total, exercise) => total + exercise.caloriesBurned,
-    0,
-  );
-  // sort by
-  const [sort, setSort] = useState<"duration" | "calories" | "rating">(
-    "duration",
-  );
+  const totalMinutesOfTodayPlan =
+    todayPlan.length !== 0
+      ? todayPlan.reduce((total, exercise) => total + exercise.duration, 0)
+      : 0;
+  const totalMinutesOfSaved =
+    saved.length !== 0
+      ? saved.reduce((total, exercise) => total + exercise.duration, 0)
+      : 0;
+  const totalCaloriesOfTodayPlan =
+    todayPlan.length !== 0
+      ? todayPlan.reduce(
+          (total, exercise) => total + exercise.caloriesBurned,
+          0,
+        )
+      : 0;
+  const totalCaloriesOfSaved =
+    saved.length !== 0
+      ? saved.reduce((total, exercise) => total + exercise.caloriesBurned, 0)
+      : 0;
   const sortedData = useContext(sortedDataContext);
   const {
     sortedTodayPlan,
@@ -44,15 +43,22 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   } = sortedData as SortedDataContextType;
   console.log(sortedTodayPlan);
   console.log(sortedSavePlan);
-  const sortedTodayPlanFn = (workouts: IWorkout[]) => {
+  const sortedTodayPlanFn = (
+    workouts: IWorkout[],
+    sort: "duration" | "calories" | "rating",
+  ) => {
     if (sort === "duration") {
-      if(button){
-        setSortedTodayPlan([...workouts].sort((a, b) => a.duration - b.duration));
+      if (button) {
+        setSortedTodayPlan(
+          [...workouts].sort((a, b) => a.duration - b.duration),
+        );
       } else {
-        setSortedSavePlan([...workouts].sort((a, b) => a.duration - b.duration));
+        setSortedSavePlan(
+          [...workouts].sort((a, b) => a.duration - b.duration),
+        );
       }
     } else if (sort === "calories") {
-      if(button){
+      if (button) {
         setSortedTodayPlan(
           [...workouts].sort((a, b) => a.caloriesBurned - b.caloriesBurned),
         );
@@ -62,7 +68,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         );
       }
     } else {
-      if(button){
+      if (button) {
         setSortedTodayPlan([...workouts].sort((a, b) => a.rating - b.rating));
       } else {
         setSortedSavePlan([...workouts].sort((a, b) => a.rating - b.rating));
@@ -122,18 +128,23 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               <p className="text-gray-300 text-[14px]">Sort By</p>
             </div>
             <select
-              value={sort}
-              defaultValue="duration"
               onChange={(e) => {
-                setSort(e.target.value as "duration" | "calories" | "rating");
+                const newSort = e.target.value as
+                  | "duration"
+                  | "calories"
+                  | "rating";
                 if (button) {
-                  sortedTodayPlanFn(todayPlan);
+                  sortedTodayPlanFn(todayPlan, newSort);
                 } else {
-                  sortedTodayPlanFn(saved);
+                  sortedTodayPlanFn(saved, newSort);
                 }
               }}
+              defaultValue="Select any"
               className="select select-success bg-[#1F242D] text-white border-gray-600 outline-0 rounded-xl"
             >
+              <option disabled={true} hidden={true}>
+                Select any
+              </option>
               <option value="duration">Duration</option>
               <option value="calories">Calories</option>
               <option value="rating">Rating</option>

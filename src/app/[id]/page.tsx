@@ -29,7 +29,7 @@ const DetailsPage = async ({ params }: { params: Promise<{ id: string }> }) => {
             <h2 className="text-white font-teko text-4xl">{data.name}</h2>
             <p className="text-[14px] text-gray-300">{data.description}</p>
             <div className="flex gap-4 mt-1">
-              {data.muscleGroups.map((x, index) => (
+              {data.muscleGroups?.map((x, index) => (
                 <p
                   className="bg-[#C2F800] px-3 rounded-xl font-bold py-0.5 my-2 text-[12px]"
                   key={index}
@@ -81,7 +81,7 @@ const DetailsPage = async ({ params }: { params: Promise<{ id: string }> }) => {
         <div className="my-3">
           <h3 className="text-white text-xl font-bold">INSTRUCTIONS</h3>
           <ol className="list-decimal list-inside">
-            {data.instructions.map((i, index) => (
+            {data.instructions?.map((i, index) => (
               <li className="text-gray-300 text-sm my-3" key={index}>
                 {" "}
                 {i}
