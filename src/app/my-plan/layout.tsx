@@ -1,7 +1,11 @@
 "use client";
-// import MyPlan from "@/components/my-plan/MyPlan";
+import { sortedDataContext } from "@/context/SortedWorkoutDataProvider";
 import { DataContext } from "@/context/WorkoutDataProvider";
-import { DataContextType } from "@/types/workoutDataType/workout";
+import {
+  DataContextType,
+  IWorkout,
+  SortedDataContextType,
+} from "@/types/workoutDataType/workout";
 import { useContext, useState } from "react";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -27,6 +31,45 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     (total, exercise) => total + exercise.caloriesBurned,
     0,
   );
+  // sort by
+  const [sort, setSort] = useState<"duration" | "calories" | "rating">(
+    "duration",
+  );
+  const sortedData = useContext(sortedDataContext);
+  const {
+    sortedTodayPlan,
+    setSortedTodayPlan,
+    sortedSavePlan,
+    setSortedSavePlan,
+  } = sortedData as SortedDataContextType;
+  console.log(sortedTodayPlan);
+  console.log(sortedSavePlan);
+  const sortedTodayPlanFn = (workouts: IWorkout[]) => {
+    if (sort === "duration") {
+      if(button){
+        setSortedTodayPlan([...workouts].sort((a, b) => a.duration - b.duration));
+      } else {
+        setSortedSavePlan([...workouts].sort((a, b) => a.duration - b.duration));
+      }
+    } else if (sort === "calories") {
+      if(button){
+        setSortedTodayPlan(
+          [...workouts].sort((a, b) => a.caloriesBurned - b.caloriesBurned),
+        );
+      } else {
+        setSortedSavePlan(
+          [...workouts].sort((a, b) => a.caloriesBurned - b.caloriesBurned),
+        );
+      }
+    } else {
+      if(button){
+        setSortedTodayPlan([...workouts].sort((a, b) => a.rating - b.rating));
+      } else {
+        setSortedSavePlan([...workouts].sort((a, b) => a.rating - b.rating));
+      }
+    }
+  };
+
   return (
     <div className="container mx-auto">
       <div className="pl-2 mt-7">
@@ -74,15 +117,25 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               Saved
             </button>
           </div>
-          <div className="flex gap-2 items-center">
-            <p className="text-[14px] text-gray-300">Sort By</p>
+          <div className="flex items-center justify-center gap-2">
+            <div className="w-30 flex justify-center items-center">
+              <p className="text-gray-300 text-[14px]">Sort By</p>
+            </div>
             <select
-              name="sort"
-              id="sort"
-              className="bg-[#14171E] text-white text-[14px] outline-0 px-3 py-2 border border-gray-600 rounded-[10px] appearance-none"
+              value={sort}
+              defaultValue="duration"
+              onChange={(e) => {
+                setSort(e.target.value as "duration" | "calories" | "rating");
+                if (button) {
+                  sortedTodayPlanFn(todayPlan);
+                } else {
+                  sortedTodayPlanFn(saved);
+                }
+              }}
+              className="select select-success bg-[#1F242D] text-white border-gray-600 outline-0 rounded-xl"
             >
               <option value="duration">Duration</option>
-              <option value="calorie">Calories</option>
+              <option value="calories">Calories</option>
               <option value="rating">Rating</option>
             </select>
           </div>

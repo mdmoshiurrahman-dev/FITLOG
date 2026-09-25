@@ -1,9 +1,5 @@
 import { IWorkout } from "@/types/workoutDataType/workout";
 import WorkoutCart from "./workout-cart/WorkoutCart";
-import { SiSupabase } from "react-icons/si";
-import { Suspense } from "react";
-import Skelton from "../../app/loading";
-
 const workoutDataPromise = async () => {
   const response = await fetch("https://api.abcz.workers.dev/api/fitlog", {
     cache: 'force-cache',

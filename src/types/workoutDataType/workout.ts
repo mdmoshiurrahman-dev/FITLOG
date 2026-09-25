@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface IWorkout {
   id: number;
   name: string;
@@ -14,12 +16,18 @@ export interface IWorkout {
   instructions: string[];
 }
 
-
 export interface DataContextType {
   todayPlan: IWorkout[];
-  SetTodayPlan: React.Dispatch<React.SetStateAction<IWorkout[]>>;
+  SetTodayPlan: Dispatch<React.SetStateAction<IWorkout[]>>;
   saved: IWorkout[];
-  setSaved: React.Dispatch<React.SetStateAction<IWorkout[]>>;
+  setSaved: Dispatch<React.SetStateAction<IWorkout[]>>;
   button: boolean;
-  setButton: React.Dispatch<React.SetStateAction<boolean>>;
+  setButton: Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface SortedDataContextType {
+  sortedTodayPlan: IWorkout[];
+  setSortedTodayPlan: Dispatch<SetStateAction<IWorkout[]>>;
+  sortedSavePlan: IWorkout[];
+  setSortedSavePlan: Dispatch<SetStateAction<IWorkout[]>>;
 }

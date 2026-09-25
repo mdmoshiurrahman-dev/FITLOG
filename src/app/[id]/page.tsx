@@ -2,8 +2,6 @@ import AddToSaveButton from "@/components/add-and-save-button/add-to-save-button
 import AddToTodayPlanButton from "@/components/add-and-save-button/AddToTodayPlanButton";
 import { IWorkout } from "@/types/workoutDataType/workout";
 import Image from "next/image";
-import { CiBookmark } from "react-icons/ci";
-import { MdDateRange } from "react-icons/md";
 
 export async function generateStaticParams() {
   const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
