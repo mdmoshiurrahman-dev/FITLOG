@@ -7,7 +7,9 @@ import { usePathname } from "next/navigation";
 import { useContext } from "react";
 const NavBar = () => {
   const pathName = usePathname();
-  const { todayPlan, saved } = useContext(DataContext) as DataContextType;
+  const { todayPlan, saved, setButton } = useContext(
+    DataContext,
+  ) as DataContextType;
   const links = (
     <>
       <li>
@@ -102,18 +104,28 @@ const NavBar = () => {
           <ul className="menu menu-horizontal px-1 text-white">{links}</ul>
         </div>
         <div className="navbar-end text-white gap-3">
-          <div className="flex gap-2 items-center">
-            <p className="text-gray-100">Plan</p>
-            <p className="bg-[#C2F800] px-2 font-bold text-black rounded-full">
-              {todayPlan.length}
-            </p>
-          </div>
-          <div className="flex gap-2 items-center">
-            <p className="text-gray-100">Saved</p>
-            <p className="border border-gray-50 px-2 font-bold text-white rounded-full">
-              {saved.length}
-            </p>
-          </div>
+          <Link href={"/my-plan"}>
+            <div
+              className="flex gap-2 items-center cursor-pointer"
+              onClick={() => setButton(true)}
+            >
+              <p className="text-gray-100">Plan</p>
+              <p className="bg-[#C2F800] px-2 font-bold text-black rounded-full">
+                {todayPlan.length}
+              </p>
+            </div>
+          </Link>
+          <Link href={"/my-plan"}>
+            <div
+              className="flex gap-2 items-center cursor-pointer"
+              onClick={() => setButton(false)}
+            >
+              <p className="text-gray-100">Saved</p>
+              <p className="border border-gray-50 px-2 font-bold text-white rounded-full">
+                {saved.length}
+              </p>
+            </div>
+          </Link>
         </div>
       </div>
     </nav>

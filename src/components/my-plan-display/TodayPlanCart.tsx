@@ -27,7 +27,10 @@ const TodayPlanCart = ({
   const handelMarkButton = () => {
     setMarkButton(!markButton);
     if (markButton) {
-      toast.success(`🎉 You've finished ${prop.name}!`);
+      toast.success(`🎉 You've finished ${prop.name}!`, {
+        className:"!bg-[#1F242D]  text-[14px] !text-[#E6E6E6] font-bold !border-2 !border-[#07BC0C]",
+        closeButton: false,
+      });
     }
   };
   return (
@@ -72,7 +75,14 @@ const TodayPlanCart = ({
           <FaCheck className="inline" /> {markButton ? "Mark as Done" : "Done"}
         </button>
         <button
-          onClick={() => handelRemoveButton(prop)}
+          onClick={() => {
+            handelRemoveButton(prop);
+            toast.error(`${prop.name} removed from Today's plan`, {
+              className:
+                "!bg-[#1F242D]  text-[14px] !text-[#E6E6E6] font-bold !border-2 !border-[#DC143C]",
+              closeButton: false,
+            });
+          }}
           className="text-gray-300 py-1.5 px-2 cursor-pointer"
         >
           <RxCross2 />

@@ -5,6 +5,7 @@ import { CiStar } from "react-icons/ci";
 import { FaFire } from "react-icons/fa";
 import { IoMdTime } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
+import { toast } from "react-toastify";
 
 export interface TodayPlanCartProps {
   prop: IWorkout;
@@ -52,7 +53,13 @@ const AddCart = ({ saved, setSaved, prop }: TodayPlanCartProps) => {
           </button>
         </Link>
         <button
-          onClick={() => handelRemoveButton(prop)}
+          onClick={() => {
+            handelRemoveButton(prop);
+            toast.error(`${prop.name} removed from saved items`, {
+                  className: "!bg-[#1F242D]  text-[14px] !text-[#E6E6E6] font-bold !border-2 !border-[#DC143C]",
+                  closeButton: false,
+                });
+          }}
           className="text-gray-300 py-1.5 px-2 cursor-pointer"
         >
           <RxCross2 />
