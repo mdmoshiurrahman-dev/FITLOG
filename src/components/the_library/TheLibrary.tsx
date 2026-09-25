@@ -2,11 +2,11 @@ import { IWorkout } from "@/types/workoutDataType/workout";
 import WorkoutCart from "./workout-cart/WorkoutCart";
 import { SiSupabase } from "react-icons/si";
 import { Suspense } from "react";
-import Skelton from "../suspance-screen/Skelton";
+import Skelton from "../../app/loading";
 
 const workoutDataPromise = async () => {
   const response = await fetch("https://api.abcz.workers.dev/api/fitlog", {
-    cache: "no-store",
+    cache: 'force-cache',
   });
   return response.json();
 };
@@ -24,13 +24,11 @@ const TheLibrary = async () => {
             Twelve lifts covering every major muscle group.
           </p>
         </div>
-        <Suspense fallback = {<Skelton/>}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 p-4 sm:p-6 w-full max-w-7xl mx-auto">
             {workoutData.map((data) => (
               <WorkoutCart key={data.id} data={data} />
             ))}
           </div>
-        </Suspense>
       </div>
     </section>
   );
