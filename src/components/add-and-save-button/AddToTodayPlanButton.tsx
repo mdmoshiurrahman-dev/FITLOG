@@ -33,8 +33,11 @@ const AddToTodayPlanButton = ({ data }: AddButtonProps) => {
   return (
     <>
       <button
-        onClick={() => handelAddToTodayPlan(data)}
-        className="bg-[#C2F800] px-4 py-2 cursor-pointer rounded-[10px] border-transparent text-sm font-semibold"
+        disabled={todayPlan.length === 5 && !isExist}
+        onClick={() => {
+          handelAddToTodayPlan(data);
+        }}
+        className={`${todayPlan.length === 5 && !isExist ? "disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500" : "bg-[#C2F800] cursor-pointer"}  px-4 py-2  rounded-[10px] border-transparent text-sm font-semibold`}
       >
         <MdDateRange className="inline" />{" "}
         {!isExist ? "Add to today's plan" : "Added to today's plan"}
