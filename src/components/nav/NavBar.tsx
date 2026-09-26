@@ -35,7 +35,7 @@ const NavBar = () => {
       <li>
         <Link
           href="/"
-          className={`${pathName === "/" ? "text-[#bcec1e] font-bold bg-[#1A2312]" : "font-bold text-black"}`}
+          className={`${pathName === "/" ? "text-[#c3ff00] font-bold bg-[#334127]" : "font-bold text-white"}`}
         >
           Workouts
         </Link>
@@ -43,7 +43,7 @@ const NavBar = () => {
       <li>
         <Link
           href="/my-plan"
-          className={`${pathName === "/my-plan" ? "text-[#bcec1e] font-bold bg-[#1A2312]" : "font-bold text-black"}`}
+          className={`${pathName === "/my-plan" ? "text-[#c3ff00] font-bold bg-[#334127]" : "font-bold text-white"}`}
         >
           My Plan
         </Link>
@@ -80,7 +80,7 @@ const NavBar = () => {
             </div>
             <ul
               tabIndex={-1}
-              className="menu menu-sm dropdown-content  rounded-box z-1 mt-3 w-52 p-2 shadow bg-gray-100"
+              className="menu menu-sm dropdown-content  rounded-box z-1 mt-3 w-52 p-2 shadow bg-[#1F242D]"
             >
               {linksDropdown}
             </ul>
@@ -89,8 +89,8 @@ const NavBar = () => {
             <div className="flex gap-3 justify-center items-center">
               <Image
                 src="/logo.png"
-                height="80"
-                width="80"
+                height="75"
+                width="75"
                 alt="logo"
                 className="h-10 w-10 ml-6 xl:ml-0"
               />
