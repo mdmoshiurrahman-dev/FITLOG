@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+  -----------FITLOG------------
+  This is a workout tracking web app where you can track your workout list such as you can favorite workout list with two different section.(eg.. today's plan and saved plan)
 
-## Getting Started
 
-First, run the development server:
+ * Technology used in this project----
+ 1. HTML for basic structure.
+ 2. some row CSS
+ 3. tailwind
+ 4. daiysu UI used in this project
+ 5. NEXT.JS framework
+ 6. TypeScript
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+ * Top five feature --
+ 1. Responsive for mobile phone, tablet and large screen like laptop too.
+ 2. SEO and performance optimized.
+ 3. You can store list with two separated section.(eg. today's plan and saved plan)
+ 4. it have some workout cart with beautiful UI and if you click each cart it will route you to details page.
+ 5. in details page you have two button to save this thing to today's plan and saved plan separately.
+ 6. you can also see details for selected cart from today's plan if you want
+ 7. in today's plan you can marks cart as a done.
+ 8. remove option also have for this two section.
+ 
+  
