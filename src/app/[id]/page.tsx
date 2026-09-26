@@ -2,6 +2,7 @@ import AddToSaveButton from "@/components/add-and-save-button/add-to-save-button
 import AddToTodayPlanButton from "@/components/add-and-save-button/AddToTodayPlanButton";
 import { IWorkout } from "@/types/workoutDataType/workout";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
   const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
@@ -13,6 +14,9 @@ const DetailsPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
   const res = await fetch(`https://api.abcz.workers.dev/api/fitlog/${id}`);
   const data = (await res.json()) as IWorkout;
+  if(data.id === undefined){
+    notFound()
+  }
   return (
     <div className="flex flex-col lg:flex-row gap-5 container mx-auto mb-6 md:mb-8 p-6">
       <div className="overflow-hidden relative flex-1 min-h-62.5">

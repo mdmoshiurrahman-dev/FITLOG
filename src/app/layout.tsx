@@ -44,7 +44,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <SortedWorkoutDataProvider>
             <ToastProvider>
               <NavBar />
-              {children}
+              <main className="flex-1">
+                {children}
+              </main>
               <Footer />
             </ToastProvider>
           </SortedWorkoutDataProvider>
