@@ -86,13 +86,13 @@ const NavBar = () => {
             </ul>
           </div>
           <Link href="/">
-            <div className="flex gap-3 justify-center items-center">
+            <div className="flex gap-1 md:gap-2 justify-center items-center">
               <Image
                 src="/logo.png"
                 height="75"
                 width="75"
                 alt="logo"
-                className="h-10 w-10 ml-6 xl:ml-0"
+                className="h-10 p-1 w-10 ml-3 md:ml-6 xl:ml-0"
               />
               <p className={`text-white font-bold font-teko text-2xl`}>
                 FITLOG
